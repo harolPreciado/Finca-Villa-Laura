@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head'); %>
+
+    <body>
+        <%- include('partials/navBar'); %>
+            <!-- Register-Form -->
+            <div>
+                <h2>Formulario de registro</h2>
+                <form method="POST" action="/user/register" enctype="multipart/form-data">
+                    <div>
+                        <div>
+                            <label><b>Nombre completo:</b></label>
+                            <input type="text" name="fullName" value="<%= locals.oldData ? oldData.fullName : null %> ">
+                            <div class="<%= locals.errors && errors.fullName ? 'is-invalid' : null %>">
+                                <% if (locals.errors && errors.fullName) { %>
+                                    <%= errors.fullName.msg %>
+                                        <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <label><b>Correo electrónico:</b></label>
+                            <input type="text" name="email" value="<%= locals.oldData ? oldData.email : null %> ">
+                            <div class="<%= locals.errors && errors.email ? 'is-invalid' : null %>">
+                                <% if (locals.errors && errors.email) { %>
+                                    <%= errors.email.msg %>
+                                        <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <label><b>Password:</b></label>
+                            <input type="password" name="password">
+                            <div class="<%= locals.errors && errors.password ? 'is-invalid' : null %>">
+                                <% if (locals.errors && errors.password) { %>
+                                    <%= errors.password.msg %>
+                                        <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <label><b>País de nacimiento:</b></label>
+                            <select name="country">
+                                <option value="" >Elegí un país</option>
+                                <% let countries=['Argentina', 'Bolivia' , 'Brasil' , 'Colombia' , 'Chile' , 'Ecuador'
+                                    , 'Paraguay' , 'Perú' , 'Uruguay' , 'Venezuela' ]; %>
+                                    <% for (const oneCountry of countries) { %>
+                                        <option value="<%= oneCountry %>" <%=locals.oldData &&
+                                            (oneCountry===oldData.country) ? 'selected' : null %>>
+                                            <%= oneCountry %>
+                                        </option>
+                                        <% } %>
+                            </select>
+                            <div class="<%= locals.errors && errors.country ? 'is-invalid' : null %>">
+                                <% if (locals.errors && errors.country) { %>
+                                    <%= errors.country.msg %>
+                                        <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <label><b>Imagen de perfil:</b></label>
+                            <input type="file" name="avatar">
+                            <div class="<%= locals.errors && errors.avatar ? 'is-invalid' : null %>">
+                                <% if (locals.errors && errors.avatar) { %>
+                                    <%= errors.avatar.msg %>
+                                        <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit">Registrarse</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- //Register-Form -->
+
+            <%- include('partials/footer'); %>
+    </body>
+
+</html>
