@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('partials/head'); %>
-<body>
-	<%- include('partials/navbar'); %>
-	
-	<h2>HOME</h2>
-    	
-	<%- include('partials/footer'); %>
-</body>
+<%- include('partials/head', {title: 'Inicio' }); %>
+	<body>
+		<nav>
+			<!-- <h2 class="title">Finca Villa Laura</h2> -->
+			<div class="navBar">
+				<a href='/'><img src="/img/LOGO.png" alt="Logo Finca Villa Laura" class="imgNavBarHome"></a>
+				<%- include('partials/navbar'); %>
+
+					<h2>HOME</h2>
+
+					<%- include('partials/footer'); %>
+	</body>
 </html>

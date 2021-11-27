@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head', {title: 'Ingresar' }); %>
+
+    <body>
+		<nav>
+			<div class="navBar">
+				<a href='/'><img src="/img/LOGO.png" alt="Logo Finca Villa Laura" class="imgNavBar"></a>
+				<%- include('partials/navbar'); %>
+            <!-- Login-Form -->
+            <div>
+                <h2>Formulario de Login</h2>
+                <form method="POST" action="/user/login">
+                    <div>
+                        <div>
+                            <label><b>Correo electrónico:</b></label>
+                            <input type="text" name="email" value="<%= locals.oldData ? oldData.email : null %> ">
+                            <div class="<%= locals.errors && errors.email ? 'is-invalid' : null %>">
+                                <% if (locals.errors && errors.email) { %>
+                                    <%= errors.email.msg %>
+                                        <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <label><b>Password:</b></label>
+                            <input type="password" name="password">
+                            <div class="<%= locals.errors && errors.password ? 'is-invalid' : null %>">
+                                <% if (locals.errors && errors.password) { %>
+                                    <%= errors.password.msg %>
+                                        <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit">Ingresar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- //Login-Form -->
+
+            <%- include('partials/footer'); %>
+    </body>
+
+</html>

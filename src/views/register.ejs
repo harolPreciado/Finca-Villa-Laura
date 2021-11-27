@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('partials/head'); %>
+<%- include('partials/head', {title: 'Registrar' }); %>
 
     <body>
-        <%- include('partials/navBar'); %>
+		<nav>
+			<div class="navBar">
+				<a href='/'><img src="/img/LOGO.png" alt="Logo Finca Villa Laura" class="imgNavBar"></a>
+				<%- include('partials/navbar'); %>
             <!-- Register-Form -->
             <div>
                 <h2>Formulario de registro</h2>

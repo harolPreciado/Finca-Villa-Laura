@@ -1,9 +1,14 @@
-// 
-const express=require('express');
+// Configurar aplicacion express
+const express = require('express');
 const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(__dirname, './public')));
+// Configurar carpeta public como estática
+app.use(express.static(path.join(__dirname, '/public')));
+
+// Conigurar session
+let session = require('express-session');
+app.use(session({secret: 'Secreto!!', resave: true, saveUninitialized: true}));
 
 // Configurar captura de informacion de formulario via POST
 app.use(express.urlencoded({extended:false}));
