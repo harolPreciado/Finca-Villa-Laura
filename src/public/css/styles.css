@@ -1,52 +1,88 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Lobster';
-    overflow: hidden;
+    font-family: 'Assistant';
 }
 
-/* --------> Barra de Navegación <-------- */
-.navBar {
-    display: flex;
-    width: 95vw;
-    align-items: center;
-    margin:auto;
-    margin-top: 10px;
-    justify-content: space-between;
+/* --------> Body <-------- */
+html{
+    background-image: url('/img/background.jpg');
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+}
+.bodyHome {
+    height: 600px;
+}
+.navBar{
+    padding-top:10px;
+    text-align: center;
+}
+.opcNavBar {
+    display: none;
 }
 .imgNavBarHome {
-    width: 160px;
+    width: 200px;
 }
 .imgNavBar {
     width: 90px;
+    margin:auto;
 }
-.ulNavBar, .ulSession{
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-}
-.liNavBar, .liSession {
-    width: 130px;
-    height: 80px;
-    text-align: center;
-    padding-top: 25px;
-    border-radius: 20px;
-    margin-left: 5px;
-    transition: all 0.7s ease-in-out; 
-}
-.liNavBar:hover, .liSession:hover{
-    background-color: rgba(0, 128, 0, 0.534);
-    padding-top: 15px
-}
-.liNavBar a, .liSession a{
-    text-decoration: none;
-    color: black;
-    font-size: 22px;
+
+@media (min-width: 768px) {
+    /* --------> Barra de Navegación <-------- */
+    .navBar {
+        display: flex;
+        width: 95vw;
+        align-items: center;
+        margin: auto;
+        margin-top: 10px;
+        justify-content: space-between;
+    }
+    .opcNavBar {
+        display: flex;
+    }
+
+    .imgNavBarHome {
+        width: 160px;
+    }
+
+    .imgNavBar {
+        width: 90px;
+    }
+
+    .ulNavBar, .ulSession {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+    }
+    .ulNavBar{
+        margin-right: 60px;
+    }
+
+    .liNavBar, .liSession {
+        width: 130px;
+        height: 80px;
+        text-align: center;
+        padding-top: 25px;
+        border-radius: 20px;
+        margin-left: 5px;
+        transition: all 0.7s ease-in-out;
+    }
+
+    .liNavBar:hover, .liSession:hover {
+        background-color: rgba(0, 128, 0, 0.534);
+        padding-top: 15px
+    }
+
+    .liNavBar a, .liSession a {
+        text-decoration: none;
+        color: black;
+        font-size: 22px;
+    }
 }
 
 
-
-.is-invalid{
+.is-invalid {
     color: red;
 }

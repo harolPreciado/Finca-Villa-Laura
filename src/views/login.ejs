@@ -3,10 +3,15 @@
 <%- include('partials/head', {title: 'Ingresar' }); %>
 
     <body>
-		<nav>
+		<div class="bodyHome">
 			<div class="navBar">
 				<a href='/'><img src="/img/LOGO.png" alt="Logo Finca Villa Laura" class="imgNavBar"></a>
-				<%- include('partials/navbar'); %>
+				<nav>
+					<div class="opcNavBar">
+						<%- include('partials/navbar'); %>
+					</div>
+				</nav>
+			</div>
             <!-- Login-Form -->
             <div>
                 <h2>Formulario de Login</h2>

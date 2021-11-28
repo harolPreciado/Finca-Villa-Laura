@@ -2,14 +2,21 @@
 <html lang="es">
 <%- include('partials/head', {title: 'Inicio' }); %>
 	<body>
-		<nav>
-			<!-- <h2 class="title">Finca Villa Laura</h2> -->
+		<div class="bodyHome">
 			<div class="navBar">
 				<a href='/'><img src="/img/LOGO.png" alt="Logo Finca Villa Laura" class="imgNavBarHome"></a>
-				<%- include('partials/navbar'); %>
-
-					<h2>HOME</h2>
-
-					<%- include('partials/footer'); %>
+				<nav>
+					<div class="opcNavBar">
+						<%- include('partials/navbar'); %>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<h2>Ven a disfrutar de la naturaleza y la cultura agropecuaria</h2>
+		<h3>
+			La finca Villa Laura, un espacio de tranquilidad rodeado de naturaleza, disfruta de la cultura cafetera en la región andina del país, vive una experiencia mágica. 
+		</h3>
+		<%- include('partials/footer'); %>
 	</body>
+
 </html>
