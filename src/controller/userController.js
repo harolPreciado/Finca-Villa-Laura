@@ -45,6 +45,9 @@ const userController = {
             let archivoUsuarios =  JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json')));
             let usuarioALoguearse = archivoUsuarios.find(usuario => usuario.email == req.body.email)
             req.session.usuarioLogueado = usuarioALoguearse;
+            if(req.body.recordarme != undefined){
+                res.cookie('recordarme', usuarioALoguearse.email, {maxAge: 1000 * 60})
+            }
             return res.redirect('/user/profile');
         }
     }, 
