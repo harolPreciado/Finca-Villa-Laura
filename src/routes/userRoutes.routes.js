@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Validaciones
-const {validationRegister, uploadFile, validationLogin} = require('../middlewares')
+const {validationRegister, uploadFile, validationLogin, admin, usuarios} = require('../middlewares')
 
 // Controlador
 const { userController } = require('../controller')
@@ -18,6 +18,9 @@ router.get('/login', userController.getLogin);
 router.post('/login', validationLogin, userController.login);
 
 // Perfil de Usuario
-router.get('/profile/:userId', userController.profile);
+router.get('/profile', usuarios || admin, userController.profile);
+
+// Cerrar Sesion
+router.get('/logout', userController.logout)
 
 module.exports = router;

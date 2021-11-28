@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head', {title: 'Ingresar' }); %>
+
+    <body>
+		<div class="bodyHome">
+			<div class="navBar">
+				<a href='/'><img src="/img/LOGO.png" alt="Logo Finca Villa Laura" class="imgNavBar"></a>
+				<nav>
+					<div class="opcNavBar">
+						<%- include('partials/navbar'); %>
+					</div>
+				</nav>
+			</div>
+            <!-- Perfil de Usuario -->
+            <div>
+                <h2>Perfil</h2>
+                <h3>Este es el perfil de <%= req.session.usuarioLogueado.nombre %>  </h3>
+            </div>
+            <!-- //Perfil de Usuario -->
+
+            <%- include('partials/footer'); %>
+    </body>
+
+</html>
