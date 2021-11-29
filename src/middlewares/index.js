@@ -4,6 +4,7 @@ const validationLogin = require('./validationLogin')
 const admin = require('./admin')
 const usuarios = require('./usuarios')
 const recordarme = require('./cookieRecordarme')
+const usuarioLogged = require('./usuarioLogged')
 
 module.exports = {
     validationRegister,
@@ -12,4 +13,5 @@ module.exports = {
     admin,
     usuarios,
     recordarme,
+    usuarioLogged
 }

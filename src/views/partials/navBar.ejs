@@ -5,7 +5,13 @@
         <li class="liNavBar"><a href="/">Ubicación</a></li>
         <li class="liNavBar"><a href="/">Reserva</a></li>
     </ul>
+    <% if (locals.isLogged) { %>
     <ul class="ulSession">
         <li class="liSession"><a href="/user/register">Registrar</a></li>
         <li class="liSession"><a href="/user/login">Ingresar</a></li>
     </ul>
+    <% } else { %>
+        <ul class="ulSession">
+            <li class="liSession"><a href="/user/profile">Perfil</a></li>
+        </ul>
+    <% } %>

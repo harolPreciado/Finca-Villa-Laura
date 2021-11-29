@@ -1,7 +1,7 @@
-//const counterVisit = require('./visists');
+const users = require('./user');
 
 
 
-//module.exports = {
-//    counterVisit,
-//}
+module.exports = {
+    users,
+}

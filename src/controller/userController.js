@@ -3,6 +3,8 @@ const fs = require('fs');
 const bcrypt = require('bcryptjs');
 
 const {validationResult} = require('express-validator')
+const {users} = require('../model')
+
 const userController = {
     getRegister: function(req, res, next) {
         return res.render('register');
@@ -15,19 +17,24 @@ const userController = {
                 oldData: req.body,
             })
         }else{
-            let users =  JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/users.json'), { encoding: 'utf-8'}));
+            let userInDB = users.findByField('email', req.body.email);
+            if(userInDB){
+                return res.render('register', {
+                    errors: {
+                        email: {
+                            msg: 'Este email ya esta registrado'
+                        }
+                    },
+                    oldData: req.body,
+                })
+            }
             let user = {
-                id: (users[(users.length)-1].id)+1,
-                nombre: req.body.fullName,
-                email: req.body.email,
+                ...req.body,
                 password: bcrypt.hashSync(req.body.password, 10),
-                pais: req.body.country,
                 avatar:  req.file ? req.file.filename : '',
                 tipo: "usuario",
               }
-              users.push(user);
-              usersJSON = JSON.stringify(users, null, 2);
-              fs.writeFileSync(path.resolve(__dirname, '../data/users.json'), usersJSON);
+              users.create(user)
               res.redirect('login');
         }
     },
@@ -52,10 +59,10 @@ const userController = {
         }
     }, 
     profile: function(req,res, next) {
-        let usuario = req.session.usuarioLogueado;
-        return res.render('profile', {req});
+        return res.render('profile');
     },
     logout: (req,res) =>{
+        res.clearCookie('cookieRecordarme')
         req.session.destroy();
         res.redirect('/')
     }

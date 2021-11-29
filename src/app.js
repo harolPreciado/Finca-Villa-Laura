@@ -10,11 +10,16 @@ app.use(express.static(path.join(__dirname, '/public')));
 let session = require('express-session');
 app.use(session({secret: 'Secreto!!', resave: true, saveUninitialized: true}));
 
+// Requerir middlewares
+const { recordarme, usuarioLogged } =require('./middlewares')
+
 // Configurar cookies
 const cookieParser = require('cookie-parser')
 app.use(cookieParser());
-const { recordarme } =require('./middlewares')
 app.use(recordarme);
+
+// Configurar middlewares de aplicacion
+app.use(usuarioLogged)
 
 // Configurar captura de informacion de formulario via POST
 app.use(express.urlencoded({extended:false}));
